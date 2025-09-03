@@ -3,62 +3,9 @@
 using namespace std;
 
 #define ll long long
-#define pll pair<ll, ll>
 #define vll vector<ll>
 #define pb push_back
-#define all(x) (x).begin(), (x).end()
-#define in_set(elem, s) ((s).find(elem) != (s).end())
-#define debug(x) cout << #x << " = " << x << endl;
 #define endl '\n'
-#define d cout << "works" << endl;
-#define M (ll)(1e9 + 7)
-template<typename T> void coutvll(T v) { for (ll i = 0; i < v.size(); ++i) { if (i == 0) { cout << v[i];} else { cout << " " << v[i]; }   } cout << '\n'; }
-template<typename T> void cinvll(T &v) { for (auto &x: v) cin >> x; }
-template<typename T> void coutgraph(T &v) { for (const auto &array: v) { for (const auto &e : array) { cout << e << " "; } cout << '\n'; } cout << '\n';}
-
-void solve();
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
-    ll t = 1;
-    // cin >> t;
-
-    while (t--) {
-        solve();
-    }
-
-    return 0;
-}
-
-ll pow(ll a, ll b) {
-    ll base = 1;
-
-    while (b > 0) {
-        if (b % 2 == 0) {
-            a *= a;
-            b /= 2;
-        } else {
-            base *= a;
-            b--;
-        }
-    }
-
-    return base;
-}
-
-void decrease(ll &n) {
-    ll tmp = n;
-
-    ll max_digit = 0;
-    while (tmp > 0) {
-        max_digit = max(max_digit, tmp % 10);
-        tmp /= 10;
-    }
-    n -= max_digit;
-}
 
 void print_chords(vll &distances, string chord_type, string &key, ll &note_index, vector<string> &notes) {
     cout << "All " + key + " " + chord_type + " chord inverses" << endl;
@@ -78,7 +25,11 @@ void print_chords(vll &distances, string chord_type, string &key, ll &note_index
     chord.clear();
 }
 
-void solve() {
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
     vector<string> chord_types = {"maj", "maj7",  "maj9"};
     vector<string> notes_with_flats = {"C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"};
     vector<string> notes_with_sharps = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
@@ -110,7 +61,6 @@ void solve() {
         }
     }
 
-
     ll idx = 0;
     for (auto &chord_type : chord_types) {
         if (key == "F" || key == "B♭" || key == "E♭" || key == "A♭" || key == "D♭" || key == "G♭" || key == "C♭") {
@@ -120,5 +70,5 @@ void solve() {
         }
         idx++;
     }
+    return 0;
 }
-
